@@ -1,4 +1,3 @@
-
 # Semantic Similṁrity For Intent Classification
 # model = Fine Tuned Sentence-transformers
 
