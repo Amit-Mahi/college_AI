@@ -1,4 +1,5 @@
-# Semantic Similarity For Intent Classification
+
+# Semantic Similṁrity For Intent Classification
 # model = Fine Tuned Sentence-transformers
 
 from sentence_transformers import SentenceTransformer
@@ -13,7 +14,6 @@ def intent_classifier(query):
     # Example FAQs or intents
     # string representation of the Question
     faqs = ["Tell me about the College.",
-            "What courses are offered?",
             "What is the admission process?",
             "What are the facilities available here?",
             "Who is Head of Department Of SSD?",
@@ -21,7 +21,7 @@ def intent_classifier(query):
             "What are the fees?",
             "What are the placement opportunities?",
             "Does the college have a strong alumni network?",
-            "What kind of extracurricular activities are available?",
+            "What kind of extracurricular activities are available?"
             "Does the college support research?",
             "Does the college have international partnerships?",
             "Are online courses available?"

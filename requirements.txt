@@ -5,4 +5,3 @@ scikit-learn
 pytest
 datasets
 sentence-transformers
-spacy download en_core_web_sm
