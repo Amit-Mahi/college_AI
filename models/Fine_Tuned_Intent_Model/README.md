@@ -4,36 +4,38 @@ tags:
 - sentence-similarity
 - feature-extraction
 - generated_from_trainer
-- dataset_size:355
+- dataset_size:1760
 - loss:CosineSimilarityLoss
 base_model: sentence-transformers/all-MiniLM-L6-v2
 widget:
-- source_sentence: Can you provide a brief overview of the college?
+- source_sentence: Can you describe the departmental decision-making process?
   sentences:
-  - Tell me about the College.
-  - Tell me about the College.
-  - What kind of extracurricular activities are available?
-- source_sentence: ' Does the college organize yoga or wellness workshops? '
-  sentences:
-  - Tell me about the College.
-  - What kind of extracurricular activities are available?
-  - What kind of extracurricular activities are available?
-- source_sentence: ' Are there book fairs or literary events on campus?  '
-  sentences:
-  - How much does a program cost?
-  - What kind of extracurricular activities are available?
-  - How much does a program cost?
-- source_sentence: ' What is the average package offered to alumni of Baba Farid Group
-    of Institutions?'
-  sentences:
-  - What kind of extracurricular activities are available?
-  - How does the alumni network support the institution?
-  - How much does a program cost?
-- source_sentence: ' Does the campus host drama or theater performances? '
-  sentences:
-  - What kind of extracurricular activities are available?
+  - Do you offer evening or weekend classes?
+  - Who are some notable alumni?
   - Is there a business school or management department?
-  - What kind of extracurricular activities are available?
+- source_sentence: Are live industry projects a part of the student learning experience
+    here?
+  sentences:
+  - What is the average placement percentage?
+  - How much does a program cost?
+  - What are the facilities available here?
+- source_sentence: Are there training or mentoring programs for students pursuing
+    careers outside their specialization?
+  sentences:
+  - Can I participate in student exchange programs?
+  - Do you organize annual events?
+  - What is the average placement percentage?
+- source_sentence: .On average, how many organizations participate in the college’s
+    recruitment drives each year?
+  sentences:
+  - What is the average placement percentage?
+  - What are the facilities available here?
+  - Who is Head of Department Of SSD?
+- source_sentence: How far is the campus from the nearest public transit station?
+  sentences:
+  - Do you offer evening or weekend classes?
+  - What are the facilities available here?
+  - Do you offer evening or weekend classes?
 pipeline_tag: sentence-similarity
 library_name: sentence-transformers
 ---
@@ -88,9 +90,9 @@ from sentence_transformers import SentenceTransformer
 model = SentenceTransformer("sentence_transformers_model_id")
 # Run inference
 sentences = [
-    ' Does the campus host drama or theater performances? ',
-    'What kind of extracurricular activities are available?',
-    'Is there a business school or management department?',
+    'How far is the campus from the nearest public transit station?',
+    'What are the facilities available here?',
+    'Do you offer evening or weekend classes?',
 ]
 embeddings = model.encode(sentences)
 print(embeddings.shape)
@@ -145,19 +147,19 @@ You can finetune this model on your own dataset.
 #### Unnamed Dataset
 
 
-* Size: 355 training samples
+* Size: 1,760 training samples
 * Columns: <code>sentence_0</code>, <code>sentence_1</code>, and <code>label</code>
-* Approximate statistics based on the first 355 samples:
-  |         | sentence_0                                                                        | sentence_1                                                                        | label                                                         |
-  |:--------|:----------------------------------------------------------------------------------|:----------------------------------------------------------------------------------|:--------------------------------------------------------------|
-  | type    | string                                                                            | string                                                                            | float                                                         |
-  | details | <ul><li>min: 7 tokens</li><li>mean: 11.41 tokens</li><li>max: 30 tokens</li></ul> | <ul><li>min: 7 tokens</li><li>mean: 10.32 tokens</li><li>max: 13 tokens</li></ul> | <ul><li>min: 1.0</li><li>mean: 1.0</li><li>max: 1.0</li></ul> |
+* Approximate statistics based on the first 1000 samples:
+  |         | sentence_0                                                                       | sentence_1                                                                       | label                                                         |
+  |:--------|:---------------------------------------------------------------------------------|:---------------------------------------------------------------------------------|:--------------------------------------------------------------|
+  | type    | string                                                                           | string                                                                           | float                                                         |
+  | details | <ul><li>min: 4 tokens</li><li>mean: 14.5 tokens</li><li>max: 31 tokens</li></ul> | <ul><li>min: 3 tokens</li><li>mean: 9.18 tokens</li><li>max: 13 tokens</li></ul> | <ul><li>min: 1.0</li><li>mean: 1.0</li><li>max: 1.0</li></ul> |
 * Samples:
-  | sentence_0                                                             | sentence_1                                                          | label            |
-  |:-----------------------------------------------------------------------|:--------------------------------------------------------------------|:-----------------|
-  | <code>What is the due date for fee payment each semester?</code>       | <code>How much does a program cost?</code>                          | <code>1.0</code> |
-  | <code>What are the departmental goals for student retention?</code>    | <code>Is there a business school or management department?</code>   | <code>1.0</code> |
-  | <code> Does the college host technology-focused fests or expos?</code> | <code>What kind of extracurricular activities are available?</code> | <code>1.0</code> |
+  | sentence_0                                                                                  | sentence_1                                 | label            |
+  |:--------------------------------------------------------------------------------------------|:-------------------------------------------|:-----------------|
+  | <code>Can yu give a breakdown of wht the progrem cost, and wich fee are included in?</code> | <code>How much does a program cost?</code> | <code>1.0</code> |
+  | <code>Can you tell me somthing abut the colleg?</code>                                      | <code>Tell me about the College.</code>    | <code>1.0</code> |
+  | <code>Have any notable politicians or corporate leaders come from this college?</code>      | <code>Who are some notable alumni?</code>  | <code>1.0</code> |
 * Loss: [<code>CosineSimilarityLoss</code>](https://sbert.net/docs/package_reference/sentence_transformer/losses.html#cosinesimilarityloss) with these parameters:
   ```json
   {
@@ -294,13 +296,19 @@ You can finetune this model on your own dataset.
 
 </details>
 
+### Training Logs
+| Epoch  | Step | Training Loss |
+|:------:|:----:|:-------------:|
+| 4.5455 | 500  | 0.0312        |
+
+
 ### Framework Versions
-- Python: 3.12.4
+- Python: 3.12.8
 - Sentence Transformers: 3.3.1
-- Transformers: 4.47.0
-- PyTorch: 2.3.1+cpu
-- Accelerate: 1.2.0
-- Datasets: 3.1.0
+- Transformers: 4.48.1
+- PyTorch: 2.5.1+cpu
+- Accelerate: 1.3.0
+- Datasets: 3.2.0
 - Tokenizers: 0.21.0
 
 ## Citation

@@ -13,18 +13,21 @@ def intent_prediction(query):
     # Example FAQs or intents
     # string representation of the Question
     faqs = ["Tell me about the College.",
-            "What courses are offered?",
-            "What is the admission process?",
+            "Do you offer evening or weekend classes?",
+            "What are the key deadlines for applying?",
             "What are the facilities available here?",
             "Who is Head of Department Of SSD?",
-            "How many Departments do you have?",
-            "What are the fees?",
-            "What are the placement opportunities?",
-            "Does the college have a strong alumni network?",
-            "What kind of extracurricular activities are available?",
-            "Does the college support research?",
-            "Does the college have international partnerships?",
-            "Are online courses available?"
+            "Is there a business school or management department?",
+            "How much does a program cost?",
+            "What is the average placement percentage?",
+            "Who are some notable alumni?",
+            "Do you organize annual events?",
+            "Are there any research labs available?",
+            "Can I participate in student exchange programs?",
+            "Do you offer online certification programs?",
+            "What is the schedule for semester exams at BFGI?",
+            "Hi",
+            "What courses should I take next semester?"
             ]
 
     # Encode FAQs
@@ -64,18 +67,21 @@ def intent_prediction(query):
     # Each intent is connected to a query
     faq_to_intent = {
         "Tell me about the College.": "COLLEGE_OVERVIEW",
-        "What courses are offered?": "COURSE_QUERY",
-        "What is the admission process?": "ADMISSION_QUERY",
+        "Do you offer evening or weekend classes?": "COURSE_QUERY",
+        "What are the key deadlines for applying?": "ADMISSION_QUERY",
         "What are the facilities available here?": "CAMPUS_QUERY",
         "Who is Head of Department Of SSD?": "FACULTY_QUERY",
-        "How many Departments do you have?": "DEPARTMENT_QUERY",
-        "What are the fees?": "FEE_QUERY",
-        "What are the placement opportunities?":"PLACEMENT_AND_CAREER_QUERY",
-        "Does the college have a strong alumni network?": "ALUMNI_NETWORK_QUERY",
-        "What kind of extracurricular activities are available?":"EVENT_AND_ACTIVITES_QUERY",
-        "Does the college support research?": "RESEARCH_OPPORTUNITIES_QUERY",
-        "Does the college have international partnerships?":"INTERNATIONAL_COLLABORATION_QUERY",
-        "Are online courses available?":"ONLINE_LEARNING_AND_RESOURCES_QUERY",
+        "Is there a business school or management department?": "DEPARTMENT_QUERY",
+        "How much does a program cost?": "FEE_QUERY",
+        "What is the average placement percentage?":"PLACEMENT_AND_CAREER_QUERY",
+        "Who are some notable alumni?": "ALUMNI_NETWORK_QUERY",
+        "Do you organize annual events?":"EVENT_AND_ACTIVITES_QUERY",
+        "Are there any research labs available?": "RESEARCH_OPPORTUNITIES_QUERY",
+        "Can I participate in student exchange programs?":"INTERNATIONAL_COLLABORATION_QUERY",
+        "Do you offer online certification programs?":"ONLINE_LEARNING_AND_RESOURCES_QUERY",
+        "What is the schedule for semester exams at BFGI?":"EXAMS_QUERY",
+        "Hi" : "GREETING",
+        "What courses should I take next semester?":"ACADEMIC_ADVISING",
         "what is this?":"FALLBACK"
     }
 

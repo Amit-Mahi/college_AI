@@ -4,8 +4,8 @@
 
 
 
-text = "Do you offer a BTech program?"
-entity = "BTech"
+text = "What is the motto of the Baba Farid Group of Institutes?"
+entity = "Baba Farid Group of Institutes"
 start = text.index(entity)
 end = start + len(entity)
 print(f"Entity: {entity}, Start: {start}, End: {end}")
@@ -15,8 +15,8 @@ import spacy
 from spacy.training import offsets_to_biluo_tags
 
 # Text and correct entity span
-text = "Can I apply for a scholarship at BFCET?"
-entities = [(33, 38, "COLLEGE")]  # Correct span
+text = "What is the motto of the Baba Farid Group of Institutes?"
+entities = [(25, 55, "COLLEGE")]  # Correct span
 
 # Create a spaCy doc
 nlp = spacy.blank("en")
